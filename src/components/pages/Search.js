@@ -1,33 +1,73 @@
-import React from "react";
+import React, {Component} from "react";
+import API from '../../utils/API.js';
 
 
 
-const Search = props => (
-  <div>
-    <h1>SEARCH Page</h1>
-     <form>
-    <div className="form-group">
-      <label htmlFor="search">Search:</label>
-      <input
-        onChange={props.handleInputChange}
-        value={props.value}
-        name="search"
-        type="text"
-        className="form-control"
-        placeholder="Search For a Dog Breed"
-        id="search"
-      />
-      <br />
-      <button
-        onClick={props.handleFormSubmit}
-        className="btn btn-primary"
-      >
-        Search
-      </button>
-    </div>
-  </form>
+class Search extends Component {
 
-  </div>
-);
+    state = {
+      search: "",
+    breeds: [],
+    results: [],
+    error: ""
 
+    }
+
+    componentDidMount() {
+
+    }
+
+    handleInputChange = event => {
+      this.setState({search: event.target.value})
+
+    }
+
+    handleFormSubmit = event => {
+      event.preventDefault()
+      API.getDogByBreed(this.state.search)
+      .then(res => {
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+
+        this.setState({ results: res.data.message, error: "" })
+      
+      .catch(err => this.setState({ error: err.message }));
+
+      })
+
+
+    }
+
+
+  render(){
+    return(
+      <div>
+        <h1>SEARCH Page</h1>
+        <form>
+          <div className="form-group">
+            <label htmlFor="search">Search:</label>
+            <input
+              onChange={this.handleInputChange}
+              value={this.value}
+              name="search"
+              type="text"
+              className="form-control"
+              placeholder="Search For a Dog Breed"
+              id="search"
+            />
+            <br />
+            <button
+              onClick={this.handleFormSubmit}
+              className="btn btn-primary"
+              >
+              Search
+            </button>
+          </div>
+        </form>
+      </div>  
+    )
+  }
+
+}
 export default Search;
