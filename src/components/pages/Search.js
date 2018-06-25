@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import API from '../../utils/API.js';
+import SearchResults from '../SearchResults';
 
 
 
@@ -65,6 +66,7 @@ class Search extends Component {
             </button>
           </div>
         </form>
+        <SearchResults results={this.state.results} />
       </div>  
     )
   }

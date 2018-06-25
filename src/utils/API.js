@@ -2,8 +2,13 @@ import axios from "axios";
 	
 export default {
 
-  getDogByBreed: function(breed) {
+  getDogByBreed: breed => {
 	return axios.get("https://dog.ceo/api/breed/" + breed + "/images");
   },
+
+  getRandomDog: ()=> {
+    return axios.get("https://dog.ceo/api/breeds/image/random");
+  }
+
 
 }
