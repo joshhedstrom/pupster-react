@@ -5,21 +5,14 @@ const NavTabs = () => (
   <ul className="nav nav-tabs">
 
     <li className="nav-item">
-      <Link
-        to="/"
-        className={
-          window.location.pathname === "/" ? "nav-link active" : "nav-link"
-        }
-      >
-        Home
-      </Link>
+        Pupster
     </li>
 
     <li className="nav-item">
       <Link
-        to="/about"
+        to="/"
         className={
-          window.location.pathname === "/about" ? "nav-link active" : "nav-link"
+          window.location.pathname === "/" ? "nav-link active" : "nav-link"
         }
       >
         About

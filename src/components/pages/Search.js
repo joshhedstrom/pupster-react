@@ -44,7 +44,7 @@ class Search extends Component {
   render(){
     return(
       <div>
-        <h1>SEARCH Page</h1>
+        <h1>Search Page</h1>
         <form>
           <div className="form-group">
             <label htmlFor="search">Search:</label>
