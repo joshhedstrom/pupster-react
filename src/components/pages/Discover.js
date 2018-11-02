@@ -43,8 +43,6 @@ loadNextDog = () => {
 }
 
 
-
-
 render() {
   return(
       <div>
